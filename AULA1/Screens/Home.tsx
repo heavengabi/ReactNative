@@ -23,13 +23,14 @@ export default function Home({ navigation }: any) {
           móveis
         </Text>
         <Botao
-         title="AULA 1"
-         onPress={() => navigation.navigate("Aula1")}
-          />
+          title="AULA 1"
+          onPress={() => navigation.navigate("Aula1")}
+        />
 
-        <Botao 
-        title="AULA 2"
-        onPress={() => navigation.navigate("Aula2")}
+        <Botao
+          title="AULA 2"
+          onPress={() => navigation.navigate("Aula2")}
+
         />
 
         <StatusBar style="light" />

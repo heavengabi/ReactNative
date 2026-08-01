@@ -1,32 +1,97 @@
+import React from "react";
+import { StatusBar } from "expo-status-bar";
 import {
+  ScrollView,
   StyleSheet,
   Text,
   View,
-  ScrollView,
-  ImageBackground,
-  StatusBar,
+  TextInput,
 } from "react-native";
-import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Imagem from "../components/Imagem";
-import Botao from "../components/Botao";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+
 import Cartao from "../components/Cartao";
-const Aula1 = () => {
+
+export default function App() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView>
-        <Imagem
-          image={{
-            uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHVcAY8Al-AkPXykR1Zd79JZ0HqwQgpzCUaN1rqfKC2X841j2Yqti",
-          }}
-        />
-        <Cartao></Cartao>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.titulo}>Explorar Perfis</Text>
+          <Text style={styles.subtitulo}>
+            Conheça novos amigos da comunidade
+          </Text>
+
+          <View style={styles.search}>
+            <Ionicons name="search" size={22} color="#000" />
+
+            <TextInput
+              placeholder="Pesquisar perfis..."
+              placeholderTextColor="#000"
+              style={styles.input}
+            />
+          </View>
+        </View>
+
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.lista}
+        >
+          <Cartao />
+          <Cartao />
+          <Cartao />
+          <Cartao />
+        </ScrollView>
+
+        <StatusBar style="dark" />
       </SafeAreaView>
     </SafeAreaProvider>
   );
-};
+}
 
-export default Aula1;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#ffd7e8",
+  },
 
-const styles = StyleSheet.create({});
+  header: {
+    paddingHorizontal: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+
+  titulo: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#ffb5ca",
+  },
+
+  subtitulo: {
+    fontSize: 16,
+    color: "#000",
+    marginTop: 5,
+    marginBottom: 20,
+  },
+
+  search: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F9B6C7",
+    borderRadius: 30,
+    paddingHorizontal: 15,
+    height: 50,
+  },
+
+  input: {
+    flex: 1,
+    marginLeft: 10,
+    fontSize: 16,
+    color: "#000",
+  },
+
+  lista: {
+    padding: 20,
+    gap: 15,
+  },
+});
