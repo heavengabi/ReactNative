@@ -3,38 +3,43 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import Botao from "../components/Botao";
 
 export default function Home({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <ImageBackground
-        style={styles.wallpaper}
-        source={{
-          uri: "https://i.pinimg.com/originals/33/84/f0/3384f0e90d77d69e4957d8d5158877fc.gif",
-        }}
-        resizeMode="cover"
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.text1} numberOfLines={4}>
-          UC15 - Desenvolver e organizar interface gráfica para dispositivos
-          móveis
-        </Text>
-        <Botao
-          title="AULA 1"
-          onPress={() => navigation.navigate("Aula1")}
-        />
+        <ImageBackground
+          style={styles.wallpaper}
+          source={{
+            uri: "",
+          }}
+          resizeMode="cover"
+        >
+          <Text style={styles.text1}>
+            Exercícios da UC15 - Desenvolver e organizar interface gráfica para
+            dispositivos móveis
+          </Text>
 
-        <Botao
-          title="AULA 2"
-          onPress={() => navigation.navigate("Aula2")}
+          <Botao title="AULA 1" onPress={() => navigation.navigate("Aula1")} />
+          <Botao title="AULA 2" onPress={() => navigation.navigate("Aula2")} />
+          <Botao title="AULA 3" onPress={() => navigation.navigate("Aula3")} />
+          <Botao title="AULA 4" onPress={() => navigation.navigate("Aula4")} />
+          <Botao title="AULA 5" onPress={() => navigation.navigate("Aula5")} />
+          <Botao title="AULA 6" onPress={() => navigation.navigate("Aula6")} />
+          <Botao title="AULA 7" onPress={() => navigation.navigate("Aula7")} />
+          <Botao title="AULA 8" onPress={() => navigation.navigate("Aula8")} />
 
-        />
-
-        <StatusBar style="light" />
-      </ImageBackground>
+          <StatusBar style="light" />
+        </ImageBackground>
+      </ScrollView>
     </View>
   );
 }
@@ -47,9 +52,8 @@ const styles = StyleSheet.create({
   wallpaper: {
     flex: 1,
     width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
     paddingHorizontal: 20,
+    paddingTop: 60,
   },
 
   text1: {
@@ -58,9 +62,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
     color: "#fff",
-    marginBottom: 40,
+    marginBottom: 30,
     textShadowColor: "#000",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
+  },
+
+  scroll: {
+    flex: 1,
+    width: "100%",
+  },
+
+  scrollContent: {
+    alignItems: "center",
+    paddingBottom: 30,
   },
 });
