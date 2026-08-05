@@ -16,10 +16,10 @@ export default function App() {
           </Text>
 
           <View style={styles.search}>
-            <Ionicons name="search" size={22} color="#000" />
+            <Ionicons name="search" size={20} color="#64748B" />
             <TextInput
               placeholder="Pesquisar perfis..."
-              placeholderTextColor="#000"
+              placeholderTextColor="#94A3B8"
               style={styles.input}
             />
           </View>
@@ -29,10 +29,29 @@ export default function App() {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.lista}
         >
-          <CartaoPerfil />
-          <CartaoPerfil />
-          <CartaoPerfil />
-          <CartaoPerfil />
+          <CartaoPerfil
+            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqQ9cwXubnxAOLjyFgN4LEmcMkZr-jQ_RBmHu7oqvPiQ&s"
+            name="Luiza Oliveira"
+            description="Apaixonada por viagens e fotografia. Adoro explorar novos lugares e capturar momentos especiais."
+          />
+
+          <CartaoPerfil
+            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgqG9i4zb-hKEJSMi666b8JOmSZBqFc6OJJNx98aShmA&s=10"
+            name="Carlos Silva"
+            description="Engenheiro de software com experiência em desenvolvimento web e mobile."
+          />
+
+          <CartaoPerfil
+            image="https://img.somake.ai/cdn-cgi/image/width=800,quality=80,format=auto,fit=scale-down/tools/examples/face-generator_gallery_1763099237_3953.jpg"
+            name="Lucas Pereira"
+            description="Desenvolvedor de software e entusiasta de tecnologia."
+          />
+
+          <CartaoPerfil
+            image="https://img.somake.ai/cdn-cgi/image/width=800,quality=80,format=auto,fit=scale-down/tools/examples/face-generator_gallery_1763099171_2969.jpg"
+            name="Joice Santos"
+            description="Cozinheira apaixonada por gastronomia."
+          />
         </ScrollView>
 
         <StatusBar style="dark" />
@@ -44,47 +63,59 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffd7e8",
+    backgroundColor: "#F1F5F9",
   },
 
   header: {
-    paddingHorizontal: 20,
-    paddingTop: 15,
-    paddingBottom: 15,
+    paddingHorizontal: 22,
+    paddingTop: 20,
+    paddingBottom: 18,
   },
 
   titulo: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#ffb5ca",
+    fontSize: 30,
+    fontWeight: "800",
+    color: "#1E3A8A",
   },
 
   subtitulo: {
-    fontSize: 16,
-    color: "#000000",
-    marginTop: 5,
-    marginBottom: 20,
+    fontSize: 15,
+    color: "#64748B",
+    marginTop: 6,
+    marginBottom: 18,
   },
 
   search: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#F9B6C7",
-    borderRadius: 30,
-    paddingHorizontal: 15,
-    height: 50,
+    backgroundColor: "#FFFFFF",
+    height: 54,
+    borderRadius: 18,
+    paddingHorizontal: 16,
 
+    borderWidth: 1,
+    borderColor: "#E2E8F0",
+
+    shadowColor: "#000",
+    shadowOpacity: 0.06,
+    shadowRadius: 12,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    elevation: 4,
   },
 
   input: {
     flex: 1,
     marginLeft: 10,
     fontSize: 16,
+    color: "#0F172A",
   },
 
   lista: {
-    padding: 20,
-    gap: 15,
-
+    paddingHorizontal: 22,
+    paddingBottom: 25,
+    gap: 18,
   },
 });
