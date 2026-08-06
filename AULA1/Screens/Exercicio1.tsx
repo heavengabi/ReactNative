@@ -5,7 +5,7 @@ import Cartao from "../components/Cartao";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function App() {
+export default function Aula1() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
