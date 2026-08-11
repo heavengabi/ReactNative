@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 import CardProduto from "./CardProduto";
+import Busca from "./Busca";
 
 const produtos = [
   {
@@ -25,8 +26,14 @@ const produtos = [
 ];
 
 const ListarProdutos = () => {
+  const [nomeProduto, setNomeProduto] = useState("");
+
+  const produtosFiltrados = produtos.filter((produto) =>
+    produto.nome.toLowerCase().includes(nomeProduto.toLowerCase()),
+  );
   return (
     <View>
+      <Busca/>
       <FlatList
         data={produtos}
         keyExtractor={(item) => item.id.toString()}

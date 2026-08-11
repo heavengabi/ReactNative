@@ -1,21 +1,22 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React from "react";
+import Busca from "./Busca";
 
 type Props = {
-    id:number
-    foto: string;
-    nome: string;
-    preco: string;
+  id: number;
+  foto: string;
+  nome: string;
+  preco: string;
 };
 
-const CardProduto = ({id, foto, nome, preco }: Props) => {
+const CardProduto = ({ id, foto, nome, preco }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image style={styles.foto} source={{ uri: foto }} resizeMode="cover" />
       </View>
       <View style={styles.infoContainer}>
-        <Text style = {styles.id}>{id}</Text>
+        <Text style={styles.id}>{id}</Text>
         <Text style={styles.nome} numberOfLines={2}>
           {nome}
         </Text>
@@ -89,7 +90,5 @@ const styles = StyleSheet.create({
     height: 30,
     borderStartColor: "red",
   },
-  id:{
-    
-  }
+  id: {},
 });
