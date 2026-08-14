@@ -1,12 +1,6 @@
-import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, StyleSheet, TextInput, View } from "react-native";
 import React, { useState } from "react";
-
-type Props = {
-  id: number;
-  foto: string;
-  nome: string;
-  preco: string;
-};
+import CardProduto from "./CardProduto";
 
 const produtos = [
   {
@@ -15,14 +9,12 @@ const produtos = [
     nome: "Pastel",
     preco: "7,00",
   },
-
   {
     id: "2",
     foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS7r6e-qvOofshjcQaKrHhdWUwdpakt37gjBPhLrgkDv5YkEL50J6kTDYp&s=10",
     nome: "Coxinha",
     preco: "3,00",
   },
-
   {
     id: "3",
     foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_lTrdyaXSmhinLmhpU8LxFV3pPyqC-MpDRyOtx5MNSg&s=10",
@@ -33,17 +25,10 @@ const produtos = [
 
 const Busca = () => {
   const [nomeProduto, setNomeProduto] = useState("");
-  const [encontrados, setEncontrados] = useState(produtos);
 
-  function procurar(texto: string) {
-    setNomeProduto(texto);
-
-    const listaFiltrada = produtos.filter((produto) =>
-      produto.nome.toLowerCase().includes(texto.toLowerCase()),
-    );
-
-    setEncontrados(listaFiltrada);
-  }
+  const encontrados = produtos.filter((produto) =>
+    produto.nome.toLowerCase().includes(nomeProduto.toLowerCase())
+  );
 
   return (
     <View style={styles.container}>
@@ -51,7 +36,24 @@ const Busca = () => {
         style={styles.input}
         value={nomeProduto}
         placeholder="Que produto deseja?"
-        onChangeText={procurar} // Chama a função a cada letra digitada
+        onChangeText={setNomeProduto}
+      />
+
+      <FlatList
+        data={encontrados}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        columnWrapperStyle={styles.row}
+        contentContainerStyle={styles.lista}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <CardProduto
+            id={Number(item.id)}
+            nome={item.nome}
+            foto={item.foto}
+            preco={item.preco}
+          />
+        )}
       />
     </View>
   );
@@ -61,19 +63,41 @@ export default Busca;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    flex: 1,
+    backgroundColor: "#F7F9FC",
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
+
   input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 20,
-  },
-  item: {
-    padding: 10,
+    width: "100%",
+    height: 52,
+    backgroundColor: "#FFF",
+    borderRadius: 15,
+    borderWidth: 2,
+    borderColor: "#F5A623",
+    paddingHorizontal: 18,
     fontSize: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#eee",
+    color: "#333",
+    marginBottom: 20,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+
+    elevation: 4,
+  },
+
+  lista: {
+    paddingBottom: 20,
+  },
+
+  row: {
+    justifyContent: "space-between",
+    marginBottom: 15,
   },
 });
