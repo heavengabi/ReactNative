@@ -25,19 +25,35 @@ const CardPokemon = ({ item }: Props) => {
 export default CardPokemon;
 
 const styles = StyleSheet.create({
+
   card: {
     width: "46%",
-    height: 190,
+    height: 180,
     marginHorizontal: "2%",
     marginBottom: 10,
-    backgroundColor: "#c066fc",
-    borderRadius: 12,
+
+    backgroundColor: "#FFFFFF",
+
+    borderRadius: 18,
+    borderWidth: 3,
+    borderColor: "#FFCB05",
+
     alignItems: "center",
     justifyContent: "center",
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
   },
+
   imagem: {
-    width: 130,
-    height: 150,
+    width: 115,
+    height: 115,
     resizeMode: "contain",
   },
 
@@ -46,5 +62,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "capitalize",
     marginTop: 8,
+    color: "#2A75BB",
   },
 });

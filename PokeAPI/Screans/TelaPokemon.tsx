@@ -1,9 +1,10 @@
-import { StyleSheet, TextInput, FlatList } from "react-native";
+import { StyleSheet, TextInput, FlatList,Button, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import CardPokemon from "./CardPokemon";
+import CardPokemon from "../components/CardPokemon";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const TelaPokemon = () => {
+
+const TelaPokemon = ({ navigation }: any) => {
   const [nome, setNome] = useState("");
   const [pokemon, setPokemon] = useState<any[]>([]);
 
@@ -35,6 +36,7 @@ const TelaPokemon = () => {
         style={styles.input}
         value={nome}
         placeholder="🔍  Busque seu Pokémon"
+        placeholderTextColor="#777"
         onChangeText={setNome}
       />
 
@@ -44,8 +46,16 @@ const TelaPokemon = () => {
         numColumns={2}
         renderItem={({ item }) => <CardPokemon item={item} />}
         contentContainerStyle={styles.lista}
+        columnWrapperStyle={styles.linha}
         showsVerticalScrollIndicator={false}
       />
+
+      <View>
+        <Button
+          title="Voltar"
+          onPress={() => navigation.navigate("Tela Inicial")}
+        />
+      </View>
     </SafeAreaView>
   );
 };
@@ -55,20 +65,43 @@ export default TelaPokemon;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e4c2ff",
-    alignItems:"center"
+    backgroundColor: "#FFFFFF",
   },
 
   input: {
-    height: 50,
-    width: 300,
-    backgroundColor: "#fff",
-    borderRadius: 25,
-    paddingHorizontal: 15,
-    marginBottom: 15,
+    height: 58,
+    width: "60%",
+    alignSelf: "center",
+
+    backgroundColor: "#FFFFFF",
+    borderRadius: 30,
+    paddingHorizontal: 20,
+    marginTop: 10,
+    marginBottom: 18,
+
+    borderWidth: 3,
+    borderColor: "#2A75BB",
+
+    fontSize: 15,
+    color: "#222",
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 4,
   },
 
   lista: {
-    paddingBottom: 20,
+    paddingBottom: 25,
+    paddingHorizontal: 8,
+  },
+
+  linha: {
+    justifyContent: "space-between",
+    marginBottom: 15,
   },
 });
